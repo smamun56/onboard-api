@@ -1,7 +1,7 @@
 package com.hr.onboard.mapper;
 
 import com.hr.onboard.dto.UserDto;
-import com.hr.onboard.entity.User;
+import com.hr.onboard.entity.auth.User;
 
 public class UserMapper {
     public static UserDto mapToUserDto(User user){
@@ -15,10 +15,11 @@ public class UserMapper {
 
     public static User mapToUser(UserDto userDto){
         return new User (
-                userDto.getId(),
-                userDto.getName(),
-                userDto.getEmail(),
-                userDto.getPassword()
+                userDto.setId();
+//                userDto.getId(),
+//                userDto.getName(),
+//                userDto.getEmail(),
+//                userDto.getPassword()
         );
     }
 }

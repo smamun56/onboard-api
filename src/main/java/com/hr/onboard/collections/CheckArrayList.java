@@ -1,11 +1,16 @@
 package com.hr.onboard.collections;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 
 public class CheckArrayList {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
+        Instant start = Instant.now();
         ArrayList<String> people = new ArrayList<>();
 
         people.add("Jack");
@@ -31,6 +36,16 @@ public class CheckArrayList {
 
 
 //        System.out.println("hello check");
+
+        Thread.sleep(2000); // Simulate a delay
+        Instant end = Instant.now();
+
+        Duration duration = Duration.between(start, end);
+        Date testDate = new Date();
+        System.out.println(start + " - - " + end);
+        System.out.println(testDate);
+        System.out.println("Elapsed Time: " + duration.toMillis() + " ms");
+
     }
 
 }

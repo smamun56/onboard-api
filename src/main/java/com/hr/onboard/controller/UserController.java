@@ -1,7 +1,7 @@
 package com.hr.onboard.controller;
 
 import com.hr.onboard.dto.UserDto;
-import com.hr.onboard.service.UserService;
+import com.hr.onboard.service.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
