@@ -32,7 +32,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public List<UserProfile> getAllUserProfiles() {
         return userRepository.findAll().stream()
-                .sorted(Comparator.comparing(User::getCreatedAt))
+                .sorted(Comparator.comparing(User::getCreateAt))
                 .map((UserProfile::new))
                 .collect(Collectors.toList());
     }
@@ -40,7 +40,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public PageList<UserProfile> getAllUserProfilesWithPage(int page, int size) {
         if(page < 0 || size <= 0) throw new IllegalArgumentException("invalid page or size !");
-        Page<User> paging = userRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "createdAt")));
+        Page<User> paging = userRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "createAt")));
         List<UserProfile> profiles =
                 paging.getContent().stream().map((UserProfile::new)).collect(Collectors.toList());
         return new PageList<>(

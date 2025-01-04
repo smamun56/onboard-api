@@ -1,0 +1,32 @@
+package com.hr.onboard.validation.validator;
+
+import com.hr.onboard.exception.ValidationError;
+
+import java.util.regex.Pattern;
+
+public class EmailValidator {
+    // ref: https://www.baeldung.com/java-email-validation-regex
+    public static final String REGEX = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+    private static final Pattern pattern = Pattern.compile(REGEX);
+    public static final String NOT_MATCH_MSG = "invalid email format !";
+
+    public String validate(String data) throws ValidationError {
+        String email = data;
+        if (email ==null) throw new ValidationError("Email can not be null !");
+        email = email.trim();
+
+        if (email.length() == 0) throw new ValidationError("email can not be empty !");
+        if (email.length() > 64) throw new ValidationError("the length of email is at most 64 !");
+        if (pattern.matcher(email).matches()) throw new ValidationError(NOT_MATCH_MSG);
+
+        return email;
+    }
+
+    private static final EmailValidator instance = new EmailValidator();
+
+    public static EmailValidator getInstance() {
+        return instance;
+    }
+
+    private EmailValidator() {}
+}

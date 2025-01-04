@@ -4,10 +4,7 @@ import com.hr.onboard.entity.Base;
 import com.hr.onboard.entity.enums.Role;
 import com.hr.onboard.model.auth.LoginAttempt;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,8 +14,10 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "users")
 public class User extends Base {
@@ -56,6 +55,13 @@ public class User extends Base {
 
     @Embedded
     LoginAttempt loginAttempt = new LoginAttempt();
+
+    public User(UUID id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 
     @Override
     public boolean equals(Object o) {

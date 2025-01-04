@@ -25,8 +25,7 @@ public class ControllerRateConstraintChecker {
     public static final Logger logger = LoggerFactory.getLogger(ControllerAuthConstraintChecker.class);
     private static final int MAX_RETRY = 3;
 
-    @Autowired
-    private RedisTemplate<String, Map<String, Object>> redisTemplate;
+    @Autowired private RedisTemplate<String, Map<String, Object>> redisTemplate;
 
     public void checkWithMethod(Method method) throws ControllerConstraintViolation {
         RateLimit rateLimit = method.getAnnotation(RateLimit.class);

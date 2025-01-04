@@ -2,10 +2,12 @@ package com.hr.onboard.service.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.util.Optional;
 
+@Service
 public class RedisServiceImpl implements RedisService {
 
     @Autowired private StringRedisTemplate redisTemplate;
