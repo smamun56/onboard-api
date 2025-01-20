@@ -4,7 +4,7 @@ import com.hr.onboard.exception.ValidationError;
 
 import java.util.regex.Pattern;
 
-public class EmailValidator {
+public class EmailValidator implements Validator<String, String>{
     // ref: https://www.baeldung.com/java-email-validation-regex
     public static final String REGEX = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
     private static final Pattern pattern = Pattern.compile(REGEX);

@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
         try {
             return loginAttempt.login(loginConfig, authenticationManager, username, password);
         } catch (InvalidOperation e) {
-            throw new AuthenticationServiceException("You have try too many times, please try again later")
+            throw new AuthenticationServiceException("You have try too many times, please try again later");
         }
     }
 }
