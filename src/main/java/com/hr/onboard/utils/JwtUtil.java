@@ -50,7 +50,7 @@ public class JwtUtil {
         }
     }
 
-    public static String generateRefreshToken(RSAPrivateKey key, String jti, String issuer, User user, Calendar exp){
+    public static String generateRefreshToken(RSAPrivateKey key, String jti, String issuer, Calendar exp){
         Claims claims = Jwts.claims();
         claims.put("type", "refresh_token");
         claims.setExpiration(exp.getTime());

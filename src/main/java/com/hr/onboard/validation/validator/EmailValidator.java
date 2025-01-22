@@ -17,7 +17,7 @@ public class EmailValidator implements Validator<String, String>{
 
         if (email.length() == 0) throw new ValidationError("email can not be empty !");
         if (email.length() > 64) throw new ValidationError("the length of email is at most 64 !");
-        if (pattern.matcher(email).matches()) throw new ValidationError(NOT_MATCH_MSG);
+        if (!pattern.matcher(email).matches()) throw new ValidationError(NOT_MATCH_MSG);
 
         return email;
     }
