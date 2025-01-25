@@ -37,6 +37,7 @@ public class ControllerRateConstraintChecker {
                     case USER -> AuthUtil.currentUserDetail().getId();
                     default -> IPUtils.getRequestIp();
                 };
+        checkRateLimitByTokenBucket(rateLimit.key(), targetIdentifier, rateLimit.limit(), rateLimit.period());
     }
 
     public void checkRateLimitByTokenBucket(String key, String targetIdentifier, long limit, long window)

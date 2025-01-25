@@ -53,6 +53,8 @@ public class JwtServiceImpl implements JwtService {
         return new TokenPair(accessToken, accessToken.getRefreshToken());
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
     public TokenPair issueTokens(UserDetail userDetail) throws UserDoesNotExist {
         User user = userRepository.getByUserName(userDetail.getUsername())
                 .orElseThrow(()-> new UserDoesNotExist("user is not exist !"));
@@ -63,6 +65,7 @@ public class JwtServiceImpl implements JwtService {
         return tokenPair;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public TokenPair refreshTokens(String refreshPlainToken) throws InvalidTokenException, InvalidOperation {
         // parse refresh token
