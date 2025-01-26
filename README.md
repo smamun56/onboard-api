@@ -1,6 +1,6 @@
 # JWT Authentication Template with Spring Boot
 
-This project is a starter template for implementing JWT (JSON Web Token) authentication in a Spring Boot application. It is designed with onboarding in mind, ensuring that new developers can quickly understand and extend the functionality.
+This project is a starter template for implementing JWT (JSON Web Token) authentication in a Spring Boot application. It is designed with onboarding in mind, ensuring that every developers can quickly understand and extend the functionality.
 
 ## Features
 
