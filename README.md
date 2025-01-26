@@ -83,57 +83,6 @@ To run this project, ensure you have the following installed:
 
 ---
 
-## Onboarding Guide
-
-### Key Components for New Developers
-
-1. **JWT Generation and Validation:**
-   - Found in `JwtUtil` class.
-   - Tokens are generated during login and validated for each request.
-
-2. **Authentication Flow:**
-   - Handled by `JwtAuthenticationFilter` and `SecurityConfig`.
-
-3. **Custom Exceptions:**
-   - Defined in the `exception` package.
-   - Ensures consistent error responses.
-
-4. **Role Management:**
-   - `Role` enum in the `model` package defines user roles.
-   - Used in `@PreAuthorize` or directly in service logic.
-
-5. **Redis Integration (Optional):**
-   - Configured in `RedisConfig`.
-   - Can be used for storing tokens or session data.
-
----
-
-## Running Onboarding Tests
-
-1. **Check Database Connection:**
-
-    Ensure the database is running and accessible.
-
-2. **Verify JWT Functionality:**
-
-    - Register a new user.
-    - Login to retrieve a JWT token.
-    - Use the token to access protected resources.
-
-3. **Run Integration Tests:**
-
-    Execute the following command to run tests:
-
-    ```bash
-    ./mvnw test
-    ```
-
-4. **Swagger Documentation:**
-
-    Access the Swagger UI at `http://localhost:8080/swagger-ui.html` for API documentation.
-
----
-
 ## Deployment
 
 1. **Build the JAR:**
