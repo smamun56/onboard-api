@@ -71,6 +71,7 @@ public class JwtUtil {
                     String k = field.getName();
                     Object v = claims.get(k);
                     if (v == null) throw new Exception("Missing field %s in access token !".formatted(k));
+                    field.set(accessTokenSpec, v);
                 } catch (Exception e){
                     throw new RuntimeException(e);
                 }

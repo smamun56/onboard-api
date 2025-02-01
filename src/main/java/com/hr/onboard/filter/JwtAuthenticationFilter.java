@@ -29,6 +29,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String accessToken = null;
+
         // auth by header
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (authHeader != null) accessToken = authHeader.replace("Bearer ", "");
@@ -42,14 +43,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (accessToken != null) {
             try {
                 if (jwtService.isAccessTokenInBlackList(accessToken))
-                    throw new InvalidTokenException("invalid token !");
+                    throw new InvalidTokenException("invalid token black list !");
+
                 UserDetail userDetail = jwtService.getUserDetailFromAccessToken(accessToken);
-                Authentication authentication = new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());
+                Authentication authentication =
+                        new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (Exception e) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return;
             }
         }
+
         filterChain.doFilter(request, response);
     }
 }
